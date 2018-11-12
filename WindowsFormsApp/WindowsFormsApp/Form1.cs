@@ -23,20 +23,28 @@ namespace WindowsFormsApp
             {
                 Button button = new Button();
                 button.DialogResult = DialogResult.OK;
-                button.Text = "확인"+i;
+                button.Name = "button" + (i+1);
+               
+                button.Text = "확인"+(i+1);
                 button.Size = new Size(100, 50);
                 button.TextAlign = ContentAlignment.MiddleCenter;
                 button.Location = new Point(100*i+30, 30);
-                
+                button.Cursor = Cursors.Hand;
+
                 Controls.Add(button);
                 button.Click += button_click;
-                button.Cursor = Cursors.Hand;
+                
             }
             
         }
 
         private void button_click(object o, EventArgs a)
         {
+            //string names = "";
+            foreach(Control c in Controls)
+            {
+                if(c.Name!="button3") c.BackColor = Color.Silver;
+            }
             Button btn = (Button)o;
             btn.BackColor = (btn.BackColor != Color.GreenYellow) ? btn.BackColor = Color.GreenYellow : btn.BackColor = Color.Silver;
 
